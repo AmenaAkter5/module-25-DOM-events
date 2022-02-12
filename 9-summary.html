@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Summay</title>
+</head>
+
+<body>
+
+    <!-- Mouse Move -->
+    <h1 id="mouse-over">Event Summary</h1>
+
+    <!-- Mouse out -->
+    <h3 id="mouse-out">I am mouse out</h3>
+
+    <!-- mouse enter -->
+    <h4 id="mouse-enter">Hi Button- mouse enter</h4>
+
+    <!-- click handler : onclick function -->
+    <button onclick="handleClickGreen()">Click Me - Green</button>
+
+    <!-- click : by add event handler -->
+    <input id="email-field" type="text" placeholder="your email address">
+
+
+
+    <!------------- Internal JavaScript ---------->
+    <!-- ====================================== -->
+
+    <script>
+
+        // click handler : onclick function
+
+        function handleClickGreen() {
+            document.body.style.backgroundColor = 'green';
+        }
+
+        // click : by add event handler
+
+        document.getElementById('email-field').addEventListener('keyup', function (event) {
+            console.log(event.target.value);
+        })
+
+        // mouse move
+
+        document.getElementById('mouse-over').addEventListener('mousemove', function () {
+            document.body.style.backgroundColor = 'red';
+        })
+
+        // mouse out
+
+        document.getElementById('mouse-out').addEventListener('mouseout', function () {
+            document.body.style.backgroundColor = 'purple';
+        })
+
+        // mouse enter
+
+        document.getElementById('mouse-enter').addEventListener('mouseenter', function () {
+            document.body.style.backgroundColor = 'fuchsia';
+        })
+
+    </script>
+</body>
+
+</html>

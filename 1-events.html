@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+
+</head>
+
+<body>
+
+    <!----------- video-1 Practical ---------->
+    <!-- =================================== -->
+
+
+    <h1 onclick="console.log('h1 is clicked')">Event with Event</h1>
+
+    <!-- button-alert -->
+    <button onclick="alert('Be careful!')">Click Me - alert</button>
+
+    <!-- button-console -->
+    <button onclick="console.log(7)">Click Me - console</button>
+
+
+
+
+
+    <!----------- video-2 Practical ---------->
+    <!-- =================================== -->
+
+
+    <!-- button-yellow : direct handle-->
+    <button onclick="document.body.style.backgroundColor='yellow'">Click Me - Yellow</button>
+
+    <!-- button-red : function-call-->
+    <button onclick="makeBackgroundRed()">Click Me - Red</button>
+
+    <!-- button-blue : id set and add style by javaScript-->
+    <button id="make-blue-button">Click Me - Blue</button>
+
+
+
+
+
+
+    <!----------- video-3 Practical ---------->
+    <!-- =================================== -->
+
+
+    <!-- button-green : id set and set style in JS on 'onclick' button-->
+    <button id="make-green-button">Click Me - Green</button>
+
+    <!-- button-purple : onclick set by anonymous function -->
+    <button id="make-purple-button">Click Me - Purple</button>
+
+
+
+    <!-------- addEventListener ------->
+    <!-- =========================== -->
+
+
+    <!-- button-skyBlue : by writing function name on addEventListener -->
+    <button id="make-skyBlue-button">Click Me - Sky Blue</button>
+
+    <!-- button-deepPink : by writing function on addEventListener -->
+    <button id="make-deepPink-button">Click Me - Deep Pink</button>
+
+
+
+    <!-- direct : Without declaring variable for button -->
+
+    <!-- button-Lime : by writing function on addEventListener -->
+    <button id="lime-button">Click Me - Lime</button>
+
+
+
+    <script>
+
+    </script>
+
+    <!-- External JavaScript -->
+
+    <script src="js/event.js"></script>
+
+</body>
+
+</html>

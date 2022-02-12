@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble</title>
+</head>
+
+<body>
+    <h1>Event Bubble</h1>
+    <section id="section-container">
+        <h3>Bubble List</h3>
+        <!-- emmet shortcut : ul#list-container>li.item*6>lorem2 -->
+        <ul id="list-container">
+            <li class="item">Lorem, ipsum.</li>
+            <li id="second-item" class="item">Illo, alias!</li>
+            <li class="item">Optio, possimus.</li>
+            <li class="item">Nobis, dolores.</li>
+            <li class="item">Consequatur, voluptas.</li>
+            <li class="item">Qui, fugiat.</li>
+        </ul>
+    </section>
+
+    <script>
+
+        //==========================
+        //    'stop-propagation'
+        // ==========================
+
+        // list : second-item [using 'stop-propagation']
+        /* document.getElementById('second-item').addEventListener('click', function (event) { // add event parameter
+            console.log('second-item is clicked');
+            event.stopPropagation();
+        }) */
+
+
+        // =====================================
+        //      'stop-immediate-propagation'
+        // =====================================
+
+        // list : second-item [using 'stop-propagation']
+        document.getElementById('second-item').addEventListener('click', function (event) { // add event parameter
+            console.log('second-item1 is clicked');
+            // event.stopPropagation();
+            event.stopImmediatePropagation();
+        })
+
+        // list : second-item [using 'stop-propagation']
+        document.getElementById('second-item').addEventListener('click', function (event) { // add event parameter
+            console.log('second-item2 is clicked');
+            event.stopPropagation();
+        })
+
+        // list : second-item [using 'stop-propagation']
+        document.getElementById('second-item').addEventListener('click', function (event) { // add event parameter
+            console.log('second-item3 is clicked');
+            event.stopPropagation();
+        })
+
+        // list : second-item [using 'stop-propagation']
+        document.getElementById('second-item').addEventListener('click', function (event) { // add event parameter
+            console.log('second-item4 is clicked');
+            event.stopPropagation();
+        })
+
+
+        // ========================
+
+        // ul : list-container
+        document.getElementById('list-container').addEventListener('click', function () {
+            console.log('ul is clicked');
+        })
+
+        // section : section-container
+        document.getElementById('section-container').addEventListener('click', function () {
+            console.log('section is clicked');
+        })
+    </script>
+</body>
+
+</html>

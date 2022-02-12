@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegate</title>
+</head>
+
+<body>
+    <h1>Event Delegate</h1>
+    <ul id="list-container">
+        <li class="item">Lorem, ipsum.</li>
+        <li class="item">Sequi, alias!</li>
+        <li class="item">Quo, non?</li>
+        <li class="item">Dolore, voluptatibus?</li>
+        <li class="item">Quis, ducimus!</li>
+        <li class="item">Autem, fuga.</li>
+    </ul>
+
+    <!-- New item add on li -->
+
+    <button id="add-item">Add item</button>
+
+
+    <!------------- Internal JavaScript ---------->
+    <!-- ====================================== -->
+
+
+    <script>
+
+        // remove item by click
+
+        // 1. without 'event' parameter
+        /* const items = document.getElementsByClassName('item');
+        for (const item of items) {
+            item.addEventListener('click', function () {
+                document.getElementById('list-container').removeChild(item);
+            })
+        } */
+
+
+        // with 'event' parameter
+        /* const items = document.getElementsByClassName('item');
+        for (const item of items) {
+            item.addEventListener('click', function (event) {
+                // console.log(event.target); // current item
+                event.target.parentNode.removeChild(event.target);
+            })
+        } */
+
+
+
+        // <!-- New item add on li -->
+
+        // step-1 : create li
+        document.getElementById('add-item').addEventListener('click', function () {
+            const li = document.createElement('li');
+            li.innerText = 'Brand new item';
+
+            //class add
+            li.classList.add('item');
+
+            // step-2 : add li in 'ul'
+            const parent = document.getElementById('list-container');
+            parent.appendChild(li);
+
+
+            // বাজে সমাধান:
+            // code run to remove item
+
+            /* const items = document.getElementsByClassName('item');
+            for (const item of items) {
+                item.addEventListener('click', function (event) {
+                    // console.log(event.target); // current item
+                    event.target.parentNode.removeChild(event.target);
+                })
+            } */
+
+        })
+
+
+        // ভালো সমাধান:
+
+        // add event handler on parent Node [it will run by event-bubble]
+
+        document.getElementById('list-container').addEventListener('click', function (event) {
+            event.target.parentNode.removeChild(event.target);
+        })
+
+    </script>
+
+</body>
+
+</html>

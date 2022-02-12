@@ -1,0 +1,1445 @@
+====================================================================
+//    video-1 : What is Event, different types of event in web
+=====================================================================
+
+
+
+slide- 0:48 [What is Event]
+
+slide - 2:44 [Event run]
+
+slide - 8:09 [onclick event explanation]
+
+* common html events --> google search [video-04:30]
+    - onclick
+
+
+* onclick attribute এ অনেক কাজ করা যায়।
+
+// HTML
+
+<button onclick="">Click Me</button> [add 'onclick' on button]
+
+Ex-
+
+<button onclick="alert(7)">Click Me</button> [by clicking 'alert' is shown]
+<button onclick="console.log(7)">Click Me</button> [by clicking 7 is shown in browser console]
+
+
+We can add 'onclick' on <h1>
+<h1 onclick="console.log('h1 is clicked')">Event with Event</h1> [by clicking on h1 the message is shown in browser console]
+
+the message must be written in 'single quotation'.
+
+
+
+
+
+
+
+
+
+====================================================================
+//     video-2 : Add onclick handler directly or via javascript
+=====================================================================
+
+
+
+
+// onclick handle এর system: মূলত ৪ টা উপায় আছে। টেনেটুনে ৬ টা।
+
+
+1. onclick এ কী কাজ হবে তা directly onclick এ set করে দেয়া
+
+Ex- button এ click করলে yellow রঙ হয়ে যাবে পুরো body র background Color 
+
+
+// HTML
+
+<button onclick="document.body.style.backgroundColor='yellow'">Click Me - Yellow</button>
+
+
+
+2. onclick এ 'function call' set করা। 
+
+click করলেই function টা call হবে ও সেই function এর কাজ সম্পন্ন হবে। অর্থাৎ onclick এর কাজ direct set না করে একটা function কে add করে দেয়া হচ্ছে।
+
+Ex - button এ click করলে Red রঙ হয়ে যাবে পুরো body র background Color
+কিন্ত function লেখা হবে javascript এর ভিতরে।
+
+// HTML
+
+<button onclick="">Click Me - Red</button>
+
+
+// javascript
+
+// red body background function
+
+        function makeBackgroundRed() {
+            document.body.style.backgroundColor = 'red';
+        }
+
+
+এখন 'button' এর onclick এ function call set করে দেবো।
+
+// HTML
+
+<button onclick="makeBackgroundRed()">Click Me - Red</button>
+
+
+3. সরাসরি javascript এ এর style add করার কাজ করা।
+
+সেক্ষেত্রে যার উপর event add করতে চাই তার একটা id / class set করা যেন getElementById / getElementsByClsassName দিয়ে এঁকে access করা যায়।
+
+[আলাদা জায়গায় function set করবো। onclick এ function name দেবো।]
+
+Ex-
+
+// HTML
+
+<button id="make-blue-button">Click Me - Blue</button>
+
+
+// javascript // 
+
+// blue-button setup [by setting function name]
+
+    const blueButton = document.getElementById('make-blue-button');
+
+    // just set the name of function
+    blueButton.onclick = makeBackgroundBlue;
+
+    function makeBackgroundBlue() {
+        document.body.style.backgroundColor = 'blue';
+    }
+
+** function call করে দিলে কোড run করার সময় call হয়ে যাবে তাই 
+function name set করতে হবে 'onclick' এ।
+
+
+video-summary: 12:05 [video]  
+
+
+
+
+
+
+
+
+
+
+====================================================================
+//     video-3 : Different ways to use addEventListener on a button
+=====================================================================
+
+
+
+একটু different way তে আমরা button এ onclick set করবো।
+
+
+4. আমরা এইবার javascript এ button এর onclick attribute এ function 
+set করে দেবো। 
+
+আগেরবার কেবল function name set করে দিছিলাম। function
+অন্যজায়গায় set করেছিলাম। এইবার এই জায়গাতেই set করবো।
+
+// HTML
+
+<!-- button-green : id set and set style in JS on 'onclick' button-->
+
+    <button id="make-green-button">Click Me - Green</button>
+
+// javascript
+
+    <script>
+        const greenButton = document.getElementById('make-green-button');
+        console.log(greenButton); // optional console
+
+        * কোন একটা variable declare করে সাথে সাথে তা console করে দেখা beginner দের জন্য একটা ভালো practice. এতে কোন ভুল করলে সহজে identified হয়।
+
+
+        greenButton.onclick = function makeBackgroundGreen() {
+            document.body.style.backgroundColor = 'green';
+        }
+
+    </script>
+
+
+
+* Using Anonymous function
+
+onclick এ function set করার সময় এই function যদি পরবর্তীতে আর use 
+করার দরকার না হয় তখন অনেকসময় এ ধরণের function এর নাম আমরা দিই 
+না। এই function কে বলা হয় anonymous function.
+
+
+// HTML
+
+<!-- button-purple : onclick set by anonymous function -->
+
+    <button id="make-purple-button">Click Me - Purple</button>
+
+
+// javascript
+
+    <script>
+
+        // purple button
+
+        const purpleButton = document.getElementById('make-purple-button');
+
+        // Anonymous Function
+        purpleButton.onclick = function () {
+            document.body.style.backgroundColor = 'purple';
+        }
+
+    </script>
+
+
+# ****** CSS named colors --> google search
+
+
+5. handle by Using 'addEventListener'
+
+এবার আমরা আর onclick add করবো না আমরা এইবার addEventListener add 
+করবো। addEventListener হলো যে কোন element এর অনেক ধরণের event 
+এতে add করে event গুলো handle করা যায়। যেমন - click একটা event.
+
+
+addEventListener এ function name set করে দেবো। function লিখবো আলাদা
+জায়গায়।
+
+Ex-
+
+
+// HTML
+
+<!-- button-skyBlue : by addEventListener -->
+
+    <button id="make-skyBlue-button">Click Me - Sky Blue</button>
+
+
+// javascript
+
+    <script>
+
+        // skyBlue Button setup : by addEventListener
+
+        const skyBlueButton = document.getElementById('make-skyBlue-button');
+
+        // addEventListener
+        skyBlueButton.addEventListener('click', makeBackgroundSky);
+
+        function makeBackgroundSky() {
+            document.body.style.backgroundColor = 'deepskyblue';
+        }
+
+    </script>
+
+
+
+6. এবার আমরা Function add করবো addEventListener যেখানে লিখবো সেখানেই। 
+
+এখানে function name use করা optional. function name ব্যবহার না করেও 
+function call হয়ে যাবে clicked হওয়ার সাথে সাথে। অর্থাৎ আমরা এখানে 
+anonymous function use করবো।
+
+
+Ex-
+
+// HTML
+
+<!-- button-deepPink : by addEventListener -->
+
+    <button id="make-deepPink-button">Click Me - Deep Pink</button>
+
+
+// javascript
+
+    <script>
+
+        // deepPink Button setup
+
+        const deepPinkButton = document.getElementById('make-deepPink-button');
+
+        // addEventListener
+        deepPinkButton.addEventListener('click', function makeBackgroundPink() { // function name is optional here
+            document.body.style.backgroundColor = 'fuchsia';
+        })
+
+
+
+        /*
+        // without function Name
+
+        // addEventListener
+        deepPinkButton.addEventListener('click', function () { // function name is optional here
+            document.body.style.backgroundColor = 'fuchsia';
+        })
+
+        */
+
+    </script>
+
+
+
+7. direct shortcut method [without declare variable for button]
+
+javascript এ আমরা button এর উপর event apply করবো directly. আমরা 
+এখানে কোন variable declare না করে কাজ করবো।
+
+
+Ex-
+
+// HTML
+
+<!-- direct : Without declaring variable for button -->
+
+    <!-- button-Lime : by writing function on addEventListener -->
+
+    // <button id="lime-button">Click Me - Lime</button> //
+
+    <script>
+        // Lime Button setup
+
+        document.getElementById('lime-button').addEventListener('click', function () {
+            document.body.style.backgroundColor = 'lime';
+        })
+
+    </script>
+
+
+
+
+
+
+
+
+
+====================================================================
+//        video-4 : Most common ways to set Event Handlers
+=====================================================================
+
+
+*** Recap of prevous video - 
+
+* আমরা যে কয়ভাবে onclick event set করতে পারি -
+
+1. directly event set করে।
+
+=> button এর onclick attribute এ directly event add করা।
+
+
+
+2. onclick এ function দিয়ে।
+
+=> button এর onclick attribute এ function name add করা। [with function call]
+=> function লেখা হবে javascript এ।
+
+
+
+3. javascript এ onclick এ function এর নাম দিয়ে। 
+
+=> button এ id set করবো। javascript এর ভিতর এই id দ্বারা 
+'getElementById' এর সাহায্যে button কে access করে button এ onclick 
+attribute এ function name set করবো। এখানে function call করবো না। 
+click করলে automatically function call হবে।
+
+=> function লিখবো আলাদা জায়গায়।
+
+
+
+4. javascript এ onclick এ function টা সরাসরি বসিয়ে দিয়ে।
+
+=> javascript এ onclick এ এবার আর function নাম না দিয়ে সরাসরি function
+টা বসিয়ে দেবো।
+
+এক্ষেত্রে আমরা function নাম চাইলে না ও দিতে পারি। function name ছাড়া function কে বলা হয় anonymous function.
+
+
+
+5. addEventListener দিয়ে এর ভিতর function name দিয়ে।
+
+=> button কে id দিয়ে খুঁজে এনে তাতে আমরা এখন আর onclick দেবো না। দেবো addEventListener যা event handle করে। 
+
+=> addEventListener এর ভিতর click event ও function name দেবো। 
+
+function লিখবো আলাদা জায়গায়।
+
+
+
+6. addEventListener দিয়ে এর ভিতর একটা function সরাসরি বসিয়ে। 
+
+=> addEventListener এর ভিতর আমরা সরাসরি function লিখবো। এটা anonymous
+function ও হতে পারে।
+
+
+
+7. direct shortcut method.
+
+=> javascript এ directly shortcut এ button এ addEventListener এর ভিতর 
+function বসিয়ে।
+
+=> যাকে click করা হবে তার একটা ID থাকবে। আমরা আলাদা করে variable 
+declare না করে তাকে [button] কে getElementById দ্বারা access করে তাতে 
+addEventListener দিয়ে এর ভিতরে function বসাবো।
+
+
+=========================
+
+event handler সাধারণত আমরা ২ টা system এ করবো। 
+
+** আমরা এদের মধ্যে বেশিভাগ সময় use করবো 2 & 7 নাম্বার। 
+অর্থাৎ button এর onclick attribute এ function call করে ও 
+direct shortcut method এ।
+
+তার মধ্যে বেশি use করবো 7 নাম্বার।
+
+
+
+
+                ================================
+
+
+
+Common - event:
+
+event-common.html --> file open করি।
+
+
+# Practical - 1:
+
+// onclick এর কাজ দেখবো
+
+তো উপরের 2 টা method use করে আমরা একটা button এ click করে তার উপরের
+paragraph এর text টা কে display করা দেখবো।
+
+
+// HTML
+
+<!-- see the text of pagraph by clicking button -->
+
+    <p id="clicking-method"></p>
+
+    # ** 1st method : function call on button onclick attribute
+    <button onclick="handleJustFunctionClick()">Just Function</button>
+
+    # ** 2nd method : direct-shortcut method [direct: addEventListener]
+    <button>Direct add event listener (addEventListener)</button>
+
+
+// javascript
+
+
+    <script>
+
+        // see the text of pagraph by clicking button
+
+# ** 1st method : function call on button onclick attribute
+
+    # // using function
+
+        function handleJustFunctionClick() {
+            const p = document.getElementById('clicking-method');
+
+            # // set inner-text of paragraph
+            p.innerText = 'set by using function'; // এখানে যা দরকার তা set করা যাবে।
+        }
+
+
+# ** 2nd method : direct-shortcut method [direct: addEventListener]
+
+        document.getElementById('handle-event').addEventListener('click', function () {
+            const p = document.getElementById('clicking-method');
+
+            # // set inner-text of paragraph
+            p.innerText = 'set by direct add event listener';
+        })
+    </script>
+
+
+
+
+# Practical - 2:
+
+Input Field and Update Button to update paragraph text by input element
+
+আমরা এখন paragraph এর text টাকে update করবো input এ যা লেখা হবে সেই 
+element দিয়ে button click এর মাধ্যমে।
+
+*** input এর ভিতরের text কে আমরা কীভাবে পেতে পারি --> google search
+
+
+// HTML
+
+<!-- Input Field and Update Button to update paragraph text by input element-->
+
+    <p id="clicking-method"></p>
+    <input type="text" name="" id="name-field">
+    <button id="update-name">Update</button>
+
+
+// javascript
+
+    <script>
+
+কাজ - 
+
+    *** update button এ click করলে input এর text add হবে paragraph এ।
+    
+    1. update button এ addEventListener দিয়ে function লিখে জুড়ে দেয়া হলো input কে
+
+    # // add addListenerEvent on update button
+
+        document.getElementById('update-name').addEventListener('click', function () {
+            const nameField = document.getElementById('name-field');
+
+    2. pagraph কে access করা হলো ও variable declare করা হলো
+
+        # // access the paragraph ID and declare variable
+            const p = document.getElementById('clicking-method');
+
+    3. pagraph এ input এর value set করে দেয়া হলো এর inner text হিসেবে।
+
+            # // set inner-text of paragraph by input value
+            p.innerText = nameField.value; // input এর text হলো value
+
+    4. input এর value paragraph এ set হওয়ার পর input box কে খালি করে দিতে আমরা input[variable থাকলে input variable].value লিখে খালি string set করে দেবো।
+
+            # // to clean the input box after updating the paragraph by input value
+            nameField.value = '';
+
+        })
+
+    </script>
+
+
+*** video summary - 12:55 [video]
+
+
+
+
+
+
+
+
+====================================================================
+//       video-5 : Create a comment box and display comment
+=====================================================================
+
+
+*** আমরা comment box create করবো এবং comment add করবো আগের comment 
+গুলোর সাথে। 
+
+comment box create : আমরা যেহেতু অনেক কিছু লিখবো তাই আমরা <input>
+নেবো না। আমরা নেবো <text area>
+
+** কাজ- video- 03:42
+
+html file এ আলাদা <section> এ আলাদা <div> এ comment box রাখার জন্য
+<textarea> tag এ text field add করবো।
+
+এবং একটা <button> নেবো। যেই button এ click করে <textarea> এর text 
+গুলো পূর্বের comment গুলোর সাথে গিয়ে যোগ হবে।
+
+addEventListener add করবো আমরা button এ।
+
+
+অর্থাৎ এখানে কাজ 3 টা।
+
+1. button এ event handler add করা (যখন click করা হবে) 
+[addEventListener]
+2. Event handler দিয়ে <textarea> এর লেখাকে capture করা
+3. আগের comment গুলোর সাথে add করা
+
+---------------
+
+// HTML
+
+<section>
+    <h4>Your Comments</h4>
+    <div id="comment-container">
+        <p>'comment'</p>
+        <p>'comment'</p>
+    </div>
+
+    <div>
+            <!-- 'Add Comment' -->
+
+            <textarea name="" id="new-comment" cols="60" rows="4"></textarea>
+            <br>
+            <button id="submit-comment">Post</button>
+    </div>
+
+</section>
+
+
+
+// javascript
+
+<script>
+
+    1. post button এ event handler add করবো
+
+        # // 1. add Event handler on 'post' button [submit-comment]
+
+        document.getElementById('submit-comment').addEventListener('click', function () {
+
+    2. click এর মাধ্যমে comment box এর text কে access / capture করা।
+    
+        # // 2. capture the text of comment box
+        const commentBox = document.getElementById('new-comment');
+        // const userComment = commentBox.value; // optional variable declaration for comment box value
+
+    3. comment box এর value কে paragraph ট্যাগে pagraph করা যাতে আগের comment গুলোর সাথে জুড়ে দেয়া যায়।
+
+        # // 3. create paragraph by comment text to add with previous comment
+        const newComment = document.createElement('p');
+        newComment.innerText = commentBox.value;
+
+    4. paragraph কে append / add করে দেয়া আগের comment paragraph গুলোর সাথে
+        
+        # // 4. append (add) paragraph
+        const commentContainer = document.getElementById('comment-container');
+        commentContainer.appendChild(newComment);
+
+    5. New comment আগের comment গুলোর সাথে add হবার পর comment box or input area / text area খালি হওয়া।
+        
+        # // 5. clean the comment Box
+        commentBox.value = '';
+
+        })
+
+    </script>
+
+** video-summary : 13:54
+
+
+
+
+
+
+
+
+
+
+====================================================================
+//     video-6 : Simple github like delete confirmation button
+=====================================================================
+
+
+# 1. delete Button
+
+** আমরা একটা লেখাকে delete করবো button এ click এর মাধ্যমে। এই কাজটা 
+আমরা দুইভাবে করতে পারি। 
+
+1. delete button এর id তে event handler add করে তার ভিতরে function এ 
+যেই লেখাটা delete করবো তার id দিয়ে access করে তার display none করে 
+দিতে পারি। [আমরা এটা দেখবো Practical এ]
+
+
+2. বা function এ যাকে delete করতে চাই সেই লেখাটার parent Node কে 
+call করে remove child করে দিতে পারি।
+
+
+# Practical - 1
+
+// HTML
+
+<!-- Delete -->
+
+    <section>
+    # যেই লেখাটা delete করতে চাই
+        <h3 id="secret-info">Very Very Important Information</h3>
+
+    # delete - button : যেটাতে click করলে delete হবে     
+        <button id="delete-btn">Delete</button>
+    </section>
+
+
+// javascript
+
+    <script>
+
+1. delete button এ event handler add করা। button এ event add করবো 
+click
+
+        # // delete- direct shortcut method
+        document.getElementById('delete-btn').addEventListener('click', function () {
+
+2. display none করে দিলাম যাকে delete করতে চাই button এ click করার পর।
+
+            # // display none that text
+            document.getElementById('secret-info').style.display = 'none';
+
+        })
+    </script>
+
+
+
+
+# 2. *** Confirmation input to delete something
+
+যেহেতু delete করে ফেললে আর ফেরত পাওয়া যাবে না তাই আমরা confirmation
+চাইতে পারি user এর কাছ থেকে। একটা modal হয়তো set করা যায়। 
+
+এখানে আমরা দেখবো user ঠিকঠাক delete লিখলে delete করতে দেয়া হবে।
+
+তার জন্য delete button এর উপর আমরা একটা input box set করবো যেখানে
+তাদেরকে delete লিখে confirmation দিতে হবে। 
+
+
+# practical - 2
+
+// HTML
+
+<section>
+
+# যেই লেখাটা delete করতে চাই
+    <h3 id="secret-info">Very Very Important Information</h3>
+
+# confirmation পাওয়ার জন্য input box যেখানে user 'delete' লিখবে।
+
+    # input box to get confirmation
+    <input type="text" placeholder="Please type delete"> 
+
+# delete - button : যেটাতে click করলে delete হবে 
+[ঠিকঠাক delete না লেখা পর্যন্ত button disabled থাকবে]
+
+    <button id="delete-btn" disabled>Delete</button>
+
+</section>
+
+
+// javascript
+
+<script>
+
+    # // event 1 : click
+
+1. button এ event handler add করা। button এ event add করবো 'click'
+
+    # // delete- direct shortcut method
+    document.getElementById('delete-btn').addEventListener('click', function () {
+
+2. display none করে দিলাম যাকে delete করতে চাই button এ click করার পর।
+
+    # // display none that text
+    document.getElementById('secret-info').style.display = 'none';
+
+    })
+
+3. Input box কে 'focus' করার পর page এর background Color লাল হয়ে যাবে।
+
+    # // event 2 : focus [input box]
+    document.getElementById('delete-confirm').addEventListener('focus', function () {
+        document.body.style.backgroundColor = 'red';
+    })
+
+4. Input box থেকে focus সরানোর পর অবস্থাকে বলে 'blur' করা। blur করে 
+দিলে অর্থাৎ input box এর বাইরে click করলে আবার background Color হবে 
+সাদা।
+
+    # // event 3 : blur [when input box is focused out]
+        document.getElementById('delete-confirm').addEventListener('blur', function () {
+            document.body.style.backgroundColor = 'white';
+        })
+
+
+*** key press related 3 টা event আছে। 
+
+(i) key press
+(ii) key up [আমরা সবসময় এটা ব্যবহার করবো]
+(iii) key down
+
+এই event গুলো দিয়ে key press এর মাধ্যমে কী input দেয়া হচ্ছে তা catch
+করা যায়। কারণ user input কে stored input এর সাথে match করে দেখার দরকার
+হয় কোন একটা কাজের confirmation পাওয়ার জন্য। 
+Example: login data, delete something etc etc.
+
+
+5. 'key down' event দিয়ে input value একটা করে দেখা যাবে আরেকটা 
+input add হওয়ার পরে।
+
+    # // event 4 : key down [input box value is shown by key press]
+        document.getElementById('delete-confirm').addEventListener('keydown', function () {
+            const deleteInput = document.getElementById('delete-confirm');
+
+            # // input value একটা করে দেখা যাবে আরেকটা input
+            add হওয়ার পরে 
+            console.log(deleteInput.value); // optional console
+        })
+
+6. 'key press' event দিয়ে input value একটা করে দেখা যাবে আরেকটা 
+input add হওয়ার পরে।
+
+    # // event 5 : key press [input box value is shown by key press]
+        document.getElementById('delete-confirm').addEventListener('keypress', function () {
+            const deleteInput = document.getElementById('delete-confirm');
+            console.log(deleteInput.value);
+        })
+
+7. 'key up' event দিয়ে input value সাথে সাথে দেখা যাবে তাই এই event use 
+করাটা safe. আমরা সবসময় এটি use করবো।
+
+    # // event 6 : key Up [input box value is shown by key press] (we use it)
+        document.getElementById('delete-confirm').addEventListener('keyup', function () {
+            const deleteInput = document.getElementById('delete-confirm');
+            console.log(deleteInput.value);
+        })
+
+8. input box এ key press করে লেখার সাথে সাথে value দেখা যায় key up 
+event দ্বারা। 
+
+কিন্তু input box এ কোন লেখা নিয়ে বসালে সেই value automatically catched
+হবে না। সেই value catch করা যাবে 'change' event দিয়ে।
+
+কোনো browser এ input box focused থাকলেও catch করবে। কোন browser 
+focused থাকা অবস্থায় change হবে না value. 
+
+focused out অর্থাৎ blur হলে value catch করবে।
+
+    # // event 7 : change [change on input box value by copy paste]
+        document.getElementById('delete-confirm').addEventListener('change', function () {
+            const deleteInput = document.getElementById('delete-confirm');
+            console.log(deleteInput.value);
+        })
+
+
+9. এখন আমাদেরকে 'delete' লেখার সাথে match পাওয়ার পর delete button
+টিকে enable করে দিতে হবে। 
+
+আমরা এটা normally 'if-else' ও function এ 'event' parameter add করে 
+সেখানে 'if-else' use করে করতে পারি।
+
+    # // event 8 : key Up - match delete [input box value is shown by key press] (we use it)
+
+        # // without 'event' parameter function
+
+        document.getElementById('delete-confirm').addEventListener('keyup', function () {
+            const deleteInput = document.getElementById('delete-confirm');
+
+            // console.log(deleteInput.value); // optional console
+
+
+            const deleteBtn = document.getElementById('delete-btn');
+
+            # // using 'if-else'
+            if (deleteInput.value == 'delete') {
+                deleteBtn.removeAttribute('disabled');
+            }
+
+            else {
+                deleteBtn.setAttribute('disabled', true);
+            }
+
+
+            # // with 'event' parameter function
+
+            document.getElementById('delete-confirm').addEventListener('keyup', function (event) { // we use parameter 'event'
+
+            # // to see the work of 'event' parameter
+
+            /* 
+            console.log(event); // কী event ঘটছে দেখা যাবে
+            console.log(event.target.value); // এই delete confirm input এর value দেখা যাবে কারণ এই 'event' এ target place এই input field. 
+            */
+
+
+            # *** // main function body
+            
+            # // get match with delete and enable delete button
+            const deleteBtn = document.getElementById('delete-btn');
+
+            // using 'if-else'
+            if (event.target.value == 'delete') {
+                deleteBtn.removeAttribute('disabled');
+            }
+
+            else {
+                deleteBtn.setAttribute('disabled', true);
+            }
+
+        })
+
+</script>
+
+
+*** এরকম আরো অনেক event আছে। mouse in, mouse out etc.
+
+এখান থেকে আমাদের জানতে হবে key up, change event এবং function এ 
+'event' parameter add করে function body লেখা। 
+
+
+
+
+
+
+
+====================================================================
+//   video-7 : (semi-advanced) Event bubble and Stop propagating
+=====================================================================
+
+
+** slide - 05:50 [video]
+** javascript event bubble --> google search [video - 07:30]
+
+
+# event bubble : 
+
+যখন কোন event ঘটে তখন browser 'DOM' এর head থেকে 
+অন্যান্য element এ গিয়ে খুঁজতে খুঁজতে জায়গামত আসে কোথায় এই event ঘটলো। 
+সেখানে এসে সে তার কাছাকাছি একই event এর handler থাকলে তাকে আগে 
+trigger করে। তারপর তার উপরের handler কে। এরপর তার উপরের handler কে। 
+অর্থাৎ সে click event হলে click এর জন্য সকল event handler কে execute 
+করে করে এভাবে সে ধাপে ধাপে এগোয়। একেই event bubbling বলে। 
+[event handler না থাকলে trigger করতে পারে না।]
+
+
+# practical - 1:
+
+// HTML
+
+<section id="section-container">
+    <h3>Bubble List</h3>
+    <# !-- emmet shortcut : ul#list-container>li.item*6>lorem2 -->
+    <ul id="list-container">
+        <li class="item">Lorem, ipsum.</li>
+        <li id="second-item" class="item">Illo, alias!</li>
+        <li class="item">Optio, possimus.</li>
+        <li class="item">Nobis, dolores.</li>
+        <li class="item">Consequatur, voluptas.</li>
+        <li class="item">Qui, fugiat.</li>
+    </ul>
+</section>
+
+
+// javascript
+
+    <script>
+        # // list : second-item
+        document.getElementById('second-item').addEventListener('click', function () {
+            console.log('second-item is clicked');
+        })
+
+        # // ul : list-container
+        document.getElementById('list-container').addEventListener('click', function () {
+            console.log('ul is clicked');
+        })
+
+        # // section : section-container
+        document.getElementById('section-container').addEventListener('click', function () {
+            console.log('section is clicked');
+        })
+    </script>
+
+
+
+
+** event bubbling 3 ধাপ / phase এ ঘটে - 
+
+1. capture phase
+2. target phase
+3. bubbling phase
+
+'DOM' এর head থেকে check করতে করতে event এর জায়গা অবধি 
+পৌঁছানোর ধাপকে বলে 'capture phase'. 
+
+event যেখানে ঘটলো সে জায়গাকে ধরতে পারা 'target phase'.
+
+event এর কাছাকাছি জায়গায় যেখানে যেখানে event handler আছে সেগুলোকে 
+trigger out করা 'bubbling phase'.
+
+
+** interview question discussion - [video 9:40]
+
+'DOM' এর parent বা child node এ event handler add করা থাকলে capture 
+করে করে আসার পর event ঘটার সবচাইতে কাছাকাছি / lowest element এর 
+event handler কে আগে trigger করবে। তারপরে তার উপরের টা কে trigger 
+করবে। তারপরে তার উপরের টা। এভাবে সে উপরের দিকে এগিয়ে এগিয়ে event
+handler গুলোকে trigger out করবে। একেই বলে event bubble.
+
+
+==========================
+    'stop-propagation'
+==========================
+
+# stop / avoid 'event-bubble' by 'stop propagation'
+
+আমি যদি event bubble না চাই অর্থাৎ একটা event এর জন্য একটা event 
+handler ই আমাকে show করা হোক তখন আমি এই event bubbling বন্ধ 
+করতে পারি 'stop propagation' দিয়ে।
+
+// javascript
+
+<script>
+
+    # // list : second-item [using 'stop-propagation']
+
+        document.getElementById('second-item').addEventListener('click', function (event) { # // add event parameter
+            console.log('second-item is clicked');
+            event.stopPropagation();
+        })
+
+</script>
+
+
+
+=====================================
+    'stop-immediate-propagation'
+=====================================
+
+*** using 'stop immediate propagation'
+
+একই জায়গায় অনেকগুলো event handler add করা যায়। এবং এদের সবাইকে 
+trigger করতে পারে event bubble। তখন এদেরকে stop করার জন্য use
+করতে হয় 'stop immediate propagation'
+আর এরপর একটা event handler ছাড়া অন্যগুলো show ই করবে না।
+
+
+
+//javascript
+
+    <script>
+
+        # // list : second-item
+        document.getElementById('second-item').addEventListener('click', function (event) { // add event parameter
+            console.log('second-item1 is clicked');
+            event.stopImmediatePropagation();
+        })
+
+        # // list : second-item
+        document.getElementById('second-item').addEventListener('click', function (event) { // add event parameter
+            console.log('second-item2 is clicked');
+            event.stopPropagation();
+        })
+
+        # // list : second-item
+        document.getElementById('second-item').addEventListener('click', function (event) { // add event parameter
+            console.log('second-item3 is clicked');
+            event.stopPropagation();
+        })
+
+        # // list : second-item
+        document.getElementById('second-item').addEventListener('click', function (event) { // add event parameter
+            console.log('second-item4 is clicked');
+            event.stopPropagation();
+        })
+
+    </script>
+
+
+
+
+** video summary - 13:15
+
+
+
+
+
+
+
+====================================================================
+// video-8 : (advanced) Event delegate and benefit of Event bubble
+=====================================================================
+
+
+** slide - 06:25
+
+
+event delegate: কোন একটা element এ click করার সাথে সাথে তা remove
+হয়ে যাবে।
+
+# Practical - 1
+
+// HTML
+
+    <h1>Event Delegate</h1>
+    <ul id="list-container">
+        <li class="item">Lorem, ipsum.</li>
+        <li class="item">Sequi, alias!</li>
+        <li class="item">Quo, non?</li>
+        <li class="item">Dolore, voluptatibus?</li>
+        <li class="item">Quis, ducimus!</li>
+        <li class="item">Autem, fuga.</li>
+    </ul>
+
+
+// javascript
+
+    <script>
+
+1. আমরা for loop চালিয়ে প্রত্যেকটা event এ handler add করবো অথবা id দিয়ে ধরে নিয়ে আসবো।
+
+    # // remove item by click
+
+    # // without 'event' parameter
+        const items = document.getElementsByClassName('item');
+        for (const item of items) {
+            item.addEventListener('click', function () {
+                document.getElementById('list-container').removeChild(item);
+            })
+        }
+
+
+    # // with 'event' parameter
+        const items = document.getElementsByClassName('item');
+        for (const item of items) {
+            item.addEventListener('click', function (event) {
+                # // console.log(event.target); // current item
+                event.target.parentNode.removeChild(event.target);
+            })
+        }
+
+    </script>
+
+
+# Practical - 2
+
+* li এ নতুন item add করতে চাই। তাই ul এর নিচে একটা button set করবো।
+button এ click করলে li তে নতুন item add হবে। 
+
+
+// HTML
+
+# <!-- New item add on li -->
+
+    <button id="add-item">Add item</button>
+
+
+// javascript
+
+    <script>
+
+        # // step-1 : create li
+        document.getElementById('add-item').addEventListener('click', function () {
+            const li = document.createElement('li');
+            li.innerText = 'Brand new item';
+
+            # // step-2 : add li in 'ul'
+            const parent = document.getElementById('list-container');
+            parent.appendChild(li);
+        })
+
+    </script>
+
+
+এখন দেখা যাবে নতুন add হওয়া item গুলোকে আর remove করা যাবে না ul 
+থেকে। কারণ ul এর আগের item গুলোতে class add ছিলো আর তাই code 
+তাদের উপর ই apply হয়েছে। নতুন item গুলোতে class ও নেই আর code গুলো 
+ও আগে run হয়ে গেছে। তাই নতুন item গুলোকে class add করেও click 
+করলে আর remove হবে না। এদের উপর class add করে code run করতে হবে
+এদের add হওয়ার পর।
+
+
+# বাজে সমাধান: 
+
+new item গুলোতে class add করা আর code এদের পরে run
+করা 
+
+
+
+// javascript
+
+    <script>
+
+        // <!-- New item add on li -->
+
+        // step-1 : create li
+        document.getElementById('add-item').addEventListener('click', function () {
+            const li = document.createElement('li');
+            li.innerText = 'Brand new item';
+
+            # // class add
+            li.classList.add('item');
+
+            // step-2 : add li in 'ul'
+            const parent = document.getElementById('list-container');
+            parent.appendChild(li);
+
+        # // বাজে সমাধান: 
+
+            # // code run to remove item
+
+            const items = document.getElementsByClassName('item');
+            for (const item of items) {
+                item.addEventListener('click', function (event) {
+                    // console.log(event.target); // current item
+                    event.target.parentNode.removeChild(event.target);
+                })
+            }
+        })
+
+    </script>
+
+
+
+# ভালো সমাধান: [usefullness of 'event - bubble']
+video - 11:44
+
+
+event handler আমরা শুধু child কে ই নয় parent কে ও দিতে পারি। আমরা 
+stop propagation use না করলে event bubble এর মাধ্যমে child এ event
+কার্যকর হলেও parent এর event handler কে ও trigger করবে ও ওই handler 
+এর command অনুযায়ী কাজ করবে।
+
+
+তাই আমরা parent কে event handler দিয়ে দেবো। একে event delegation বলে।
+অর্থাৎ আমার কাজটা অন্য কাউকে দিয়ে করাচ্ছি। event কে delegate করে
+দিচ্ছি।
+
+event delegate করায় নতুন যত item add হবে তাদের ধরে ধরে class দেয়ার 
+ঝামেলা নেই, event handler add করার ঝামেলা নেই। যা ই add হচ্ছে তাকে 
+remove করা যাচ্ছে।
+
+
+* event - delegation: 13:59
+
+# practical
+
+// javascript
+
+<script>
+
+    # // ভালো সমাধান:
+
+        # // add event handler on parent Node [it will run by event-bubble]
+
+        document.getElementById('list-container').addEventListener('click', function (event) {
+            event.target.parentNode.removeChild(event.target);
+        })
+        
+</script>
+
+event.target - যেখানে event কার্যকর হচ্ছে সেই জায়গা বুঝায়।
+
+
+
+
+
+
+
+
+
+====================================================================
+//          video-9 : DOM events summary and home work
+=====================================================================
+
+
+দুইভাবে click handle করা শিখেছি আমরা।
+
+
+# 1. click handler : onclick function
+
+// HTML
+
+    <button onclick="handleClickGreen()">Click Me - Green</button>
+
+
+// javascript
+
+<script>
+
+    # // click handler : onclick function
+
+    function handleClickGreen() {
+        document.body.style.backgroundColor = 'green';
+    }
+
+</script>
+
+
+# 2. click : by add event handler
+
+// HTML
+
+    <input id="email-field" type="text" placeholder="your email address">
+
+*** onchange, onfocus, onblur attribute add করে তাতে function add 
+করে দিতে পারি আমরা। 
+
+কিন্তু আমরা addEventListener দিয়ে event handler add করে দিবো।
+
+
+// javascript
+
+** ID দিয়ে ধরে নিয়ে এসে তার সাথে event handler add করে দেবো। 
+event কী ঘটবে তা ঠিক করে দেবো function এ।
+
+<script>
+    # // click : by add event handler
+
+        document.getElementById('email-field').addEventListener('keyup', function (event) {
+            console.log(event.target.value);
+        })
+
+    ** এখানে আমরা keydown, keypress, focus, blur, change, click বিভিন্ন
+    event handler দিতে পারি।
+
+</script>
+
+
+# 3. Mouse move
+
+mouse move করলে যা ঘটবে তা event handler দিয়ে add করে দিতে পারি।
+
+// HTML
+
+    <h1 id="mouse-over">Event Summary</h1>
+
+
+// javascript
+
+<script>
+    # // mouse move
+
+        document.getElementById('mouse-over').addEventListener('mousemove', function () {
+            document.body.style.backgroundColor = 'red';
+        })
+
+</script>
+
+
+# 3. mouse enter
+
+** h4 block এ mouse enter করলেই background Color টা change হয়ে যাবে।
+
+
+// HTML
+
+    <h4 id="mouse-enter">Hi Button- mouse enter</h4>
+
+
+// javascript
+
+<script>
+
+    # // mouse enter
+
+        document.getElementById('mouse-enter').addEventListener('mouseenter', function () {
+            document.body.style.backgroundColor = 'fuchsia';
+        })
+
+</script>
+
+
+# 4. mouse out
+
+** mouse enter করার পর mouse out হইলেই background Color টা change হয়ে যাবে।
+
+
+// HTML
+
+    <h1 id="mouse-out">I am mouse out</h1>
+
+
+// javascript
+
+<script>
+
+    # // mouse out
+
+        document.getElementById('mouse-out').addEventListener('mouseout', function () {
+            document.body.style.backgroundColor = 'purple';
+        })
+
+</script>
+
+
+** javascript events --> google search
+
+
+==========
+   H.W
+==========
+
+2 টা input box থাকবে।
+
+1. 1st button এ click করলে 1st input box এর text / লেখা টা কে এনে 
+console log করবে।
+
+2. 2nd button এ click করলে 2nd input box এর text / লেখা টা কে এনে 
+console log করবে।
+
+3. 3rd button এ 1st input box এর text ও 2nd input box এর text / লেখা
+কে এনে যোগ করে যোগফল দিবে। [console or paragraph দেখাবে।]
+
+[2 দিন পর দেখানো হবে।]
+
+
+
+# practical - 1:
+
+
+// HTML
+
+    <input id="first" type="text" name="" id="" placeholder="First Name">
+    <button id="btn-1">Button-1</button>
+    <br>
+    <input id="second" type="text" name="" id="" placeholder="Last Name">
+    <button id="btn-2">Button-2</button>
+    <br>
+    <h2 id="name-box" style="border: 2px solid blue; width: 15%;"></h2>
+    <button id="btn-3">Button-3</button>
+
+
+// javascript
+
+
+<script>
+
+    # // btn-1
+    document.getElementById('btn-1').addEventListener('click', function () {
+        const input1 = document.getElementById('first');
+        const input1Value = input1.value;
+        console.log(input1Value);
+    })
+
+    # // btn-2
+    document.getElementById('btn-2').addEventListener('click', function () {
+        const input2 = document.getElementById('second');
+        const input2Value = input2.value;
+        console.log(input2Value);
+    })
+
+    # // btn-3
+    document.getElementById('btn-3').addEventListener('click', function () {
+        # // input box - 1
+        const input1 = document.getElementById('first');
+        const input1Value = input1.value;
+
+        # // input box - 2
+        const input2 = document.getElementById('second');
+        const input2Value = input2.value;
+
+        # // Add : input box - 1 + '..' + input box - 2
+        const value = input1Value + ' ' + input2Value;
+        console.log(value);
+
+        # // set the name on 'h2' box
+        const nameBox = document.getElementById('name-box');
+        nameBox.innerText = value;
+        
+    })
+
+</script>
+
+
+
+# practical - 2:
+
+# // If added name set on another input box
+
+// HTML
+
+    <input id="name-box" type="text">
+
+
+// javascript
+
+<script>
+    # // set the name on 'input' box [inside the function 'btn-3']
+    const nameBox = document.getElementById('name-box');
+    nameBox.value = value;
+</script>

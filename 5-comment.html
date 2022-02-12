@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment</title>
+</head>
+
+<body>
+    <h2>Add Your Comment here...</h2>
+
+    <section>
+        <h4>Your Comments</h4>
+        <div id="comment-container">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium placeat, quas necessitatibus
+                doloremque recusandae reprehenderit accusantium architecto, iste atque magnam corporis. Expedita ratione
+                quis assumenda eius, numquam aliquid alias a?</p>
+            <p>Incidunt ut iste sit quia assumenda maiores tempora libero a, dignissimos, dolores autem nisi, officiis
+                veniam. Rerum praesentium repellendus, quis, deleniti est quasi eos obcaecati ad eum, blanditiis
+                mollitia similique.</p>
+        </div>
+        <div>
+
+            <!-- Add Comment -->
+
+            <textarea name="" id="new-comment" cols="60" rows="4"></textarea>
+            <br>
+            <button id="submit-comment">Post</button>
+        </div>
+    </section>
+
+
+    <!------------- Internal JavaScript ---------->
+    <!-- ====================================== -->
+
+    <script>
+
+        // 1. add Event handler on 'post' button [submit-comment]
+
+        document.getElementById('submit-comment').addEventListener('click', function () {
+
+            // 2. capture the text of comment box
+            const commentBox = document.getElementById('new-comment');
+            // const userComment = commentBox.value;
+
+            // 3. create paragraph by comment text to add with previous comment
+            const newComment = document.createElement('p');
+            newComment.innerText = commentBox.value;
+
+            // 4. append (add) paragraph
+            const commentContainer = document.getElementById('comment-container');
+            commentContainer.appendChild(newComment);
+
+            // 5. clean the comment Box
+            commentBox.value = '';
+        })
+    </script>
+</body>
+
+</html>

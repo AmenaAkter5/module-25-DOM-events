@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+
+<body>
+    <input id="first" type="text" name="" id="" placeholder="First Name">
+    <button id="btn-1">Button-1</button>
+    <br>
+    <input id="second" type="text" name="" id="" placeholder="Last Name">
+    <button id="btn-2">Button-2</button>
+    <br>
+    <input id="name-box" type="text">
+    <!-- <h2 id="name-box" style="border: 2px solid blue; width: 15%;"></h2> -->
+    <button id="btn-3">Button-3</button>
+
+
+    <!-- Internal JavaScript -->
+
+    <script>
+        // btn-1
+        document.getElementById('btn-1').addEventListener('click', function () {
+            const input1 = document.getElementById('first');
+            const input1Value = input1.value;
+            console.log(input1Value);
+        })
+
+        // btn-2
+        document.getElementById('btn-2').addEventListener('click', function () {
+            const input2 = document.getElementById('second');
+            const input2Value = input2.value;
+            console.log(input2Value);
+        })
+
+        // btn-3
+        document.getElementById('btn-3').addEventListener('click', function () {
+            // input box - 1
+            const input1 = document.getElementById('first');
+            const input1Value = input1.value;
+
+            // input box - 2
+            const input2 = document.getElementById('second');
+            const input2Value = input2.value;
+
+            // Add : input box - 1 + '..' + input box - 2
+            const value = input1Value + ' ' + input2Value;
+            console.log(value);
+
+            // set the name on 'h2' box
+            const nameBox = document.getElementById('name-box');
+            // nameBox.innerText = value;
+            nameBox.value = value;
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Event</title>
+</head>
+
+<body>
+    <h1>Common Event</h1>
+
+    <!-- see the text of pagraph by clicking button -->
+
+    <p id="clicking-method"></p>
+
+    <!-- method - 1 : function call on button onclick attribute -->
+    <button onclick="handleJustFunctionClick()">Just Function</button>
+
+    <!-- method - 2 : direct-shortcut method [direct: addEventListener] -->
+    <button id="handle-event">Direct add event listener (addEventListener)</button>
+
+
+    <!-- Input Field and Update Button to update paragraph text by input element-->
+
+    <input type="text" name="" id="name-field">
+    <button id="update-name">Update</button>
+
+
+
+
+    <!------------- Internal JavaScript ---------->
+    <!-- ====================================== -->
+
+    <script>
+
+        // see the text of pagraph by clicking button
+
+        // 1st Method - function call on button onclick attribute
+
+        // using function
+        function handleJustFunctionClick() {
+            const p = document.getElementById('clicking-method');
+
+            // set inner-text of paragraph
+            p.innerText = 'set by using function';
+        }
+
+
+        // 2nd method : direct-shortcut method [direct: addEventListener]
+
+        document.getElementById('handle-event').addEventListener('click', function () {
+            const p = document.getElementById('clicking-method');
+
+            // set inner-text of paragraph
+            p.innerText = 'set by direct add event listener';
+        })
+
+        // =================
+
+        // direct method to input field
+
+        // Input Field and Update Button to update paragraph text by input element
+
+
+        // add addListenerEvent on update button
+
+        document.getElementById('update-name').addEventListener('click', function () {
+            const nameField = document.getElementById('name-field');
+
+            // access the paragraph ID and declare variable
+            const p = document.getElementById('clicking-method');
+
+            // set inner-text of paragraph by input value
+            p.innerText = nameField.value;
+
+            // to fresh the input box after updating the paragraph by input value
+            nameField.value = '';
+        })
+    </script>
+</body>
+
+</html>
